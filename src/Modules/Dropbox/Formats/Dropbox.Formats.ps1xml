@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+    <Controls>
+        <Control>
+            <Name>GenericCollection-GroupingFormat</Name>
+                    <CustomControl>
+                        <CustomEntries>
+                            <CustomEntry>
+                                <CustomItem>
+                                    <Frame>
+                                        <LeftIndent>4</LeftIndent>
+                                        <CustomItem>
+                                            <Text>Container: </Text>
+                                            <ExpressionBinding>
+                                                <PropertyName>PSParentPath</PropertyName>
+                                            </ExpressionBinding>
+                                          <NewLine/>
+                                        </CustomItem>
+                                    </Frame>
+                                </CustomItem>
+                            </CustomEntry>
+                        </CustomEntries>
+            </CustomControl>
+        </Control>
+    </Controls>
+
+    <ViewDefinitions>
+        <View>
+            <Name>CollectionChildren</Name>
+            <ViewSelectedBy>
+                <TypeName>Dropbox.Api.Files.FolderMetadata</TypeName>
+                <TypeName>Dropbox.Api.Files.FileMetadata</TypeName>
+            </ViewSelectedBy>
+            <GroupBy>
+                <PropertyName>PSParentPath</PropertyName>
+                <CustomControlName>GenericCollection-GroupingFormat</CustomControlName>
+            </GroupBy>
+            <TableControl>
+                <TableHeaders>
+                  <TableColumnHeader>
+                    <Width>10</Width>
+                    <Label>          </Label>
+                    <Alignment>Left</Alignment>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                    <Width>24</Width>
+                    <Label>Last Modified</Label>
+                    <Alignment>Right</Alignment>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                    <Width>14</Width>
+                    <Label>Size</Label>
+                    <Alignment>Right</Alignment>
+                  </TableColumnHeader>
+                  <TableColumnHeader>                        
+						            <Label>Name</Label>
+                        <Alignment>Left</Alignment>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                  <TableRowEntry>
+                        <TableColumnItems>
+                          <TableColumnItem>
+                            <PropertyName>SSItemMode</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                            <PropertyName>ServerModified</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                                <PropertyName>Size</PropertyName>
+                            </TableColumnItem>
+                          <TableColumnItem>
+                                <PropertyName>PSChildName</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>

@@ -1,0 +1,28 @@
+﻿TOPIC
+    about_Dropbox_Version
+
+VERSION
+    You are running version 1.0 of the Dropbox Provider.
+
+CHANGE LOG
+  Description
+    The changelog documents the changes in each release of the
+    Simplex PowerShell module.
+
+Coming Features
+  new-item support
+  set-item support
+  remove-item support
+  sticky access token management
+  
+1.0.0
+  Initial Release
+    Support for:
+    	navigating folders
+      listing contents
+    	get/set-content for files
+
+SEE ALSO
+    https://github.com/beefarino/powershell.dropbox
+    http://www.codeowls.com/
+    about_dropbox
