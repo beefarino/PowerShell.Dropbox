@@ -18,7 +18,7 @@ namespace CodeOwls.PowerShell.Dropbox
             var lowerPath = path.ToLowerInvariant();
             if (Cache.ContainsKey(lowerPath))
             {
-                return Cache[path];
+                return Cache[lowerPath];
             }
 
             var result = client.Files.ListFolderAsync(path).Result;

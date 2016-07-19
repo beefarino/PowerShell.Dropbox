@@ -26,10 +26,9 @@ namespace CodeOwls.PowerShell.Dropbox
                 var results = sessionState.InvokeCommand.InvokeScript(RegistrationScript);
                 CurrentEventJob = results.FirstOrDefault()?.BaseObject;
             }
-            catch
+            finally
             {
                 IsRegistered = false;
-                throw;
             }
 
         }

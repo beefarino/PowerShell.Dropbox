@@ -1,5 +1,5 @@
 <#
-    Copyright (c) 2014 Code Owls LLC, All Rights Reserved.
+    Copyright (c) 2016 Code Owls LLC, All Rights Reserved.
 #>
 
 @{
@@ -58,7 +58,7 @@
     FormatsToProcess = @( './formats/dropbox.formats.ps1xml' )
 
     # Modules to import as nested modules of the module specified in ModuleToProcess
-    NestedModules = ''
+    NestedModules = 'Dropbox-functions.psm1'
 
 
     # Functions to export from this module

@@ -2,7 +2,7 @@
     about_Dropbox_Version
 
 VERSION
-    You are running version 1.0 of the Dropbox Provider.
+    You are running version 1.1 of the Dropbox Provider.
 
 CHANGE LOG
   Description
@@ -14,7 +14,22 @@ Coming Features
   set-item support
   remove-item support
   sticky access token management
-  
+
+1.1
+  Features Added:
+    Internal module functions added as file transfer helpers
+    Added ability to export DPAPI-protected access token and re-use on
+      subsequent drives. The exported token is encrypted for the
+      current user only.  Specify the protected token in the
+      -accessToken dynamic parameter of the new-psdrive cmdlet
+
+  Issues Resolved:
+    Added userid to dropbox path structure to allow full psprovider
+      path support
+    Path caching mechanism now resets once the powershell engine
+      goes idle
+    Path caching mechanism now properly ignores path casing
+
 1.0.0
   Initial Release
     Support for:

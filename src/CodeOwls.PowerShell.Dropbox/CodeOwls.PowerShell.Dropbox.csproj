@@ -30,20 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CodeOwls.PowerShell.Paths, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2F.1.4\lib\net40\CodeOwls.PowerShell.Paths.dll</HintPath>
+    <Reference Include="CodeOwls.PowerShell.Paths, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\P2F.1.6.1\lib\net45\CodeOwls.PowerShell.Paths.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CodeOwls.PowerShell.Provider, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\P2F.1.4\lib\net40\CodeOwls.PowerShell.Provider.dll</HintPath>
+    <Reference Include="CodeOwls.PowerShell.Provider, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\P2F.1.6.1\lib\net45\CodeOwls.PowerShell.Provider.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dropbox.Api, Version=0.1.6024.18266, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dropbox.Api.3.4.0\lib\net45\Dropbox.Api.dll</HintPath>
+      <HintPath>packages\Dropbox.Api.3.4.0\lib\net45\Dropbox.Api.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -51,10 +51,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -89,8 +89,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\p2f\src\CodeOwls.PowerShell\CodeOwls.PowerShell.Provider\CodeOwls.PowerShell.Provider.csproj">
+      <Project>{b352375b-7c58-4943-95c0-14871e17a208}</Project>
+      <Name>CodeOwls.PowerShell.Provider</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

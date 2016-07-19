@@ -1,17 +1,21 @@
-﻿using CodeOwls.PowerShell.Paths.Processors;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+using System.Text.RegularExpressions;
+using CodeOwls.PowerShell.Paths.Processors;
+using CodeOwls.PowerShell.Provider.PathNodeProcessors;
 using CodeOwls.PowerShell.Provider.PathNodes;
 
 namespace CodeOwls.PowerShell.Dropbox
 {
-    public class DropboxPathResolver : PathResolverBase
+    public class DropboxPathResolver : PSProviderPathResolver<DropboxDrive>
     {
-        private readonly DropboxDrive _drive;
-
-        public DropboxPathResolver(DropboxDrive drive)
+        public DropboxPathResolver(IEnumerable<PSDriveInfo> drives) : base(drives)
         {
-            _drive = drive;
         }
 
-        protected override IPathNode Root { get { return new DropboxRootFolderNode( _drive.Client );  } }
+        protected override IPathNode Root { get { return new DropboxRootFolderNode( ActiveDrive.Client );  } }
     }
 }
