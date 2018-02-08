@@ -19,7 +19,12 @@ function copy-dropBoxItem {
       [parameter( mandatory=$false)]
       [switch]
       # overwrites the local file if it already exists
-      $force
+      $force,
+
+      [parameter( mandatory=$false)]
+      [int]
+      # the number of bytes to read from the file in a given iteration; set this number higher to speed up reading of larger files
+      $readCount = 1
   )
 
   process {
@@ -59,7 +64,7 @@ function copy-dropBoxItem {
       return;
     }
 
-    $bytes = get-content -literalpath $pspath;
+    $bytes = get-content -literalpath $pspath -readcount $readCount | foreach {$_};
     if( (Test-Path $localFilePath) -and (-not $force) ) {
         write-error -message "local file $localFilePath exists, and -force was not specified" -targetObject $localFilePath
         return;

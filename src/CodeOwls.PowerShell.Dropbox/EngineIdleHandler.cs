@@ -9,7 +9,7 @@ namespace CodeOwls.PowerShell.Dropbox
     public static class EngineIdleManager
     {
         public static event EventHandler OnEngineIdle;
-        static bool IsRegistered = false;
+        public static bool IsRegistered = false;
 
         public static object CurrentEventJob { get; private set; } = null;
 
@@ -21,25 +21,18 @@ namespace CodeOwls.PowerShell.Dropbox
             }
 
             IsRegistered = true;
-            try
-            {
-                var results = sessionState.InvokeCommand.InvokeScript(RegistrationScript);
-                CurrentEventJob = results.FirstOrDefault()?.BaseObject;
-            }
-            finally
-            {
-                IsRegistered = false;
-            }
-
+            var results = sessionState.InvokeCommand.InvokeScript(RegistrationScript);
+            CurrentEventJob = results.FirstOrDefault()?.BaseObject;
         }
         
         const string RegistrationScript =
-            @"register-engineEvent -sourceIdentifier PowerShell.OnIdle -action { 
+			@"register-engineEvent -sourceIdentifier PowerShell.OnIdle -action { 
                 try {
                     [CodeOwls.PowerShell.Dropbox.EngineIdleManager]::NotifyEngineIdle( $host.runspace.sessionstateproxy ); 
                 }
                 finally {  
                     unregister-event -sourceIdentifier ([CodeOwls.PowerShell.Dropbox.EngineIdleManager]::CurrentEventJob.Name);
+					[CodeOwls.PowerShell.Dropbox.EngineIdleManager]::IsRegistered = $false;
                 }
             }";
         
